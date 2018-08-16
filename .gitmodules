@@ -1,0 +1,3 @@
+[submodule "report/totex"]
+	path = report/totex
+	url = git@github.com:tfiers/totex.git
