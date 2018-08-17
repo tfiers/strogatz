@@ -1,0 +1,29 @@
+% !tex root = ./NLS_Report.tex
+
+\chapter{Stability of equilibrium points \& bifurcations}
+
+\section{A simple population model}
+
+The population model has in general two solutions (and hence two fixed points) for $\dot{N} = 0$ , namely
+\[
+N_1 = 0 \qq{and} N_2 = K \frac{\alpha - \beta}{\alpha}.
+\]
+The stability of these fixed points in function of $\alpha$ and $\beta$ can be summarised as follows:
+
+\begin{tabular}{@{}ll@{}} \toprule
+Parameter region    &  Fixed points \\ \midrule
+\multirow{2}{*}
+{$\alpha < \beta$}  &  $N_1 = 0$: stable \\
+                    &  $N_2 < 0$: unstable \\[1em]
+\multirow{2}{*}
+{$\alpha = \beta$}  &  $N_1 = N_2 = 0$: half-stable \\
+                    &  (unstable for $N < 0$, stable for $N > 0$)  \\[1em]
+\multirow{2}{*}
+{$\alpha > \beta$}  &  $N_1 = 0$: unstable \\
+                    &  $N_2 > 0$: stable \\
+\bottomrule
+\end{tabular}
+
+The system thus undergoes a transcritical bifurcation at $\alpha = \beta$.
+
+
