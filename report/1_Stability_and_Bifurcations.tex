@@ -31,10 +31,21 @@ Parameter region    &  Fixed points \\ \midrule
 
 The system thus undergoes a transcritical bifurcation at $\alpha = \beta$. Note that the fixed point $N_2 < 0$ is not meaningful in this model, as $N$ represents a non-negative population count.
 
-For the given parameter values, $\alpha > \beta$. Using the above results, we therefore find an unstable fixed point $N_1 = 0$, and a stable fixed point $N_2 = K (\alpha - \beta)/\alpha = \num{4 023 913}$. As the population does not start at $N = 0$, it will evolve towards $N_2$. The difference between $N(t)$ and $N(\infty) = N_2$ decays exponentially, as a Taylor approximation of $\dot{N}$ around $N_2$ can show.
+For the given parameter values, $\alpha > \beta$. Using the above results, we therefore find an unstable fixed point $N_1 = 0$, and a stable fixed point $N_2 = K (\alpha - \beta)/\alpha = \num{4 023 913}$. As the population starts at $N > 0$, it will evolve towards $N_2$. The difference between $N(t)$ and $N(\infty) = N_2$ decays exponentially, as a Taylor approximation of $\dot{N}$ around $N_2$ can show.
 
 
 
 \section{Gene control model}
+
+For $r = 0$, the system equations become decoupled:
+%
+\begin{align*}
+\dot{x} &= \frac{\alpha_1}{2} - x  \\
+\dot{y} &= \frac{\alpha_2}{2} - y.
+\end{align*}
+%
+We can therefore analyse them separately. It is clear that there is one fixed point, at $x^* = \alpha_1/2$ and $y^* = \alpha_2/2$. It is a globally stable attractor, as $\forall x < x^*, \dot{x} > 0$ and $\forall x > x^*, \dot{x} < 0$ (and analogously for $\dot{y}$). In other words, the fixed point is an attracting star.
+
+
 
 
