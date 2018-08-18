@@ -5,7 +5,8 @@
 
 
 
-\section{A simple population model}
+
+\section{Simple population model}
 
 The population model has in general two solutions (and hence two fixed points) for $\dot{N} = 0$ , namely
 \[
@@ -35,6 +36,7 @@ For the given parameter values, $\alpha > \beta$. Using the above results, we th
 
 
 
+
 \section{Gene control model}
 
 For $r = 0$, the system equations become decoupled:
@@ -44,8 +46,21 @@ For $r = 0$, the system equations become decoupled:
 \dot{y} &= \frac{\alpha_2}{2} - y.
 \end{align*}
 %
-We can therefore analyse them separately. It is clear that there is one fixed point, at $x^* = \alpha_1/2$ and $y^* = \alpha_2/2$. It is a globally stable attractor, as $\forall x < x^*, \dot{x} > 0$ and $\forall x > x^*, \dot{x} < 0$ (and analogously for $\dot{y}$). In other words, the fixed point is an attracting star.
+We can therefore analyse them separately. It is clear that there is one fixed point, at $x^* = \alpha_1/2$ and $y^* = \alpha_2/2$. It is a globally stable attractor, as $\forall x < x^*,\ \dot{x} > 0$ and $\forall x > x^*,\ \dot{x} < 0$ (and analogously for $\dot{y}$). The fixed point is thus an attracting star.
 
+For $r \geq 0$ and $\alpha_1 = \alpha_2 = 2$, the equilibrium equations become
+%
+\begin{align*}
+x (1+y^r) &= 2 \\
+y (1+x^r) &= 2.
+\end{align*}
+%
+It can be easily verified that $(1,1)$ is a solution and hence a fixed point. We have already shown that it is the only fixed point for $r = 0$. Plotting the gradient in phase space for different $r \in (0, 2)$ strongly suggests that it is also the only fixed point for nonzero $r$ (at least for $x \geq 0$ and $y \geq 0$). See e.g. \cref{fig:pplane_r1} for $r = 1$. As a final piece of evidence, different trajectories simulated back in time all either tend towards $(\infty, \infty)$ or cross into $x < 0,\ y < 0$ territory.
 
-
-
+\begin{figure}
+\img[0.4]{1_2_streamline_close}
+\img[0.4]{1_2_quiver_close}
+\img[0.4]{1_2_quiver_far}
+\captionn{There is only one fixed point for $\bm{0 < r < 2}$}{Phase space plots of the gene expression model, for $r = 1$ and $\alpha_1 = \alpha_2 = 2$. \emph{Left}: some (partial) trajectories in phase space. Thicker lines represent a higher local speed. Note the attractor at $(1, 1)$. \emph{Middle}: local velocities, evaluated on a grid. \emph{Right}: same as middle, but for a larger region in phase space.}
+\label{fig:pplane_r1}
+\end{figure}
