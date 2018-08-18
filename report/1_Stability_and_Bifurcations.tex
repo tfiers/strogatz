@@ -1,6 +1,9 @@
 % !tex root = ./NLS_Report.tex
 
+
 \chapter{Stability of equilibrium points \& bifurcations}
+
+
 
 \section{A simple population model}
 
@@ -10,6 +13,7 @@ N_1 = 0 \qq{and} N_2 = K \frac{\alpha - \beta}{\alpha}.
 \]
 The stability of these fixed points in function of $\alpha$ and $\beta$ can be summarised as follows:
 
+\begin{center}
 \begin{tabular}{@{}ll@{}} \toprule
 Parameter region    &  Fixed points \\ \midrule
 \multirow{2}{*}
@@ -23,7 +27,14 @@ Parameter region    &  Fixed points \\ \midrule
                     &  $N_2 > 0$: stable \\
 \bottomrule
 \end{tabular}
+\end{center}
 
-The system thus undergoes a transcritical bifurcation at $\alpha = \beta$.
+The system thus undergoes a transcritical bifurcation at $\alpha = \beta$. Note that the fixed point $N_2 < 0$ is not meaningful in this model, as $N$ represents a non-negative population count.
+
+For the given parameter values, $\alpha > \beta$. Using the above results, we therefore find an unstable fixed point $N_1 = 0$, and a stable fixed point $N_2 = K (\alpha - \beta)/\alpha = \num{4 023 913}$. As the population does not start at $N = 0$, it will evolve towards $N_2$. The difference between $N(t)$ and $N(\infty) = N_2$ decays exponentially, as a Taylor approximation of $\dot{N}$ around $N_2$ can show.
+
+
+
+\section{Gene control model}
 
 
