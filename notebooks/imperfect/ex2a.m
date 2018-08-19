@@ -21,8 +21,8 @@ ustab_idxs = find(ustab == 1);
 stab_idxs = find(ustab == 0);
 plot(h(stab_idxs), x(stab_idxs), 'b.');
 plot(h(ustab_idxs), x(ustab_idxs), 'r.');
-ylim([-3,3]);
+ylim([-2.5,2.5]);
 
 idx = coco_bd_idxs(bd1, 'SN');
 plot(h(idx), x(idx), 'ro', 'markerfacecolor','r','markersize',9);
-xlabel('h'); ylabel('u','Rotation',0,'HorizontalAlignment','right');
+xlabel('$h$'); ylabel('$u$','Rotation',0,'HorizontalAlignment','right');

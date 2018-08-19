@@ -1,8 +1,7 @@
-clear;
 close all;
 
 % fixed value for h
-h_fix = -0.1;
+% h_fix = -0.1;
 
 %% find first branch
 prob = coco_prob();
@@ -22,8 +21,9 @@ ustab_idxs = find(ustab == 1);
 stab_idxs = find(ustab == 0);
 plot(r(stab_idxs), x(stab_idxs), 'b.');
 plot(r(ustab_idxs), x(ustab_idxs), 'r.');
+ylim([-2.5,2.5]);
 
-xlabel('r'); ylabel('x');
+xlabel('$r$'); ylabel('$u$','Rotation',0,'HorizontalAlignment','right');
 
 %% find second branch
 % Since we know about the pitchfork bifurcation, we can suspect that the
@@ -49,5 +49,4 @@ plot(r(stab_idxs), x(stab_idxs), 'b.');
 plot(r(ustab_idxs), x(ustab_idxs), 'r.');
 
 idx = coco_bd_idxs(bd2, 'SN');
-plot(r(idx), x(idx), 'ro','markerfacecolor','r');
-xlabel('r'); ylabel('x');
+plot(r(idx), x(idx), 'ro','markerfacecolor','r','markersize',9);

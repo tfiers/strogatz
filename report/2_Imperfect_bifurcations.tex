@@ -3,16 +3,30 @@
 
 \chapter{Imperfect bifurcations}
 
-When $h$ is varied, we observe saddle-node bifurcations for $r > 0$ (see \cref{fig:h_u}). At $r = 0$, these two folding points coalesce into a single degenerate bifurcation point.
+When $h$ is varied, we observe saddle-node bifurcations for $r > 0$ (see \cref{fig:h_u}). For $r = 0$, these two points coalesce into a single degenerate bifurcation point at $h = 0$, where $u$ experiences critical slowing down as it approaches the origin.
 
 \begin{figure}
 \img[0.4]{r_-1}
-% \img[0.4]{r_-0_5}
 \img[0.4]{r_0}
-% \img[0.4]{r_0_5}
 \img[0.4]{r_1}
-\captionn{$\bm{(h,u)}$-bifurcation diagrams}{Blue dots are stable equilibria, red dots are unstable equilibria, and large red circles indicate saddle-node bifurcations. \Left: $r = -1$. (Phase space topologies for other $r < 0$ are equivalent). \Center: $r = 0$. \Right: $r = 1$. (Phase space topologies for other $r > 0$ are equivalent).}
+\captionn{$\bm{(h,u)}$-bifurcation diagrams}{Blue dots are stable equilibria, red dots are unstable equilibria, and large red circles indicate saddle-node bifurcations. Left: $r = -1$. (Phase space topologies for other $r < 0$ are equivalent). Center: $r = 0$. Right: $r = 1$. (Phase space topologies for other $r > 0$ are equivalent).}
 \label{fig:h_u}
 \end{figure}
 
+% When on the other hand 
 
+\begin{figure}
+\img[0.4]{h_neg}
+\img[0.4]{h_0}
+\img[0.4]{h_pos}
+\captionn{$\bm{(r,u)}$-bifurcation diagrams}{Colors as in \cref{fig:h_u}. Left: $h = -0.1$. Center: $h = 0$. Right: $h = 0.1$.}
+\label{fig:r_u}
+\end{figure}
+
+\begin{figure}
+\img[0.4]{bf_branch_u_r}
+\img[0.4]{bf_branch_u_h}
+\img[0.4]{bf_branch_r_h}
+\captionn{The fold curve}{Continuation of the saddle-node bifurcations (the large red dots in \cref{fig:h_u,fig:r_u}), projected on the $(u,r)$, $(u,h)$, and $(r,h)$ planes.}
+\label{fig:fold_curve}
+\end{figure}
