@@ -89,19 +89,21 @@ It has two distinct eigenvalue-eigenvector pairs:
 %
 For $0 \leq r < 2$, $\ \lambda_1 \in (-2, -1]$ and $\lambda_2 \in [-1, 0)$. Both eigenvalues are negative, and $(1,1)$ is therefore a stable node. Because $\lambda_1 < \lambda_2$, $\ \vb{v}_1 = (1,\ 1)$ is the fast eigendirection and $\vb{v}_2 = (-1,\ 1)$ is the slow eigendirection, as can be seen in \cref{fig:genes_r1}. (For $r = 0$, both eigenvalues are equal; i.e. $(1,1)$ is then a star node).
 
+Based on phase space plots for different values of $r$, it seems that a supercritical pitchfork bifurcation occurs at $r = 2$. As the problem is symmetrical for $\alpha_1 = \alpha_2$, this is expected (\citefull{Strogatz1994}).
 
-Based on phase space plots for different values of $r$, it seems that a supercritical pitchfork bifurcation occurs at $r = 2$. This is a plausible bifurcation given the system that is modelled: when the mutual repression rate $r$ is high, a slight abundance of one gene (say $x$) over the other will create a positive feedback loop: $x$ represses $y$ more than $y$ represses $x$, resulting in more $x$ and less $y$. This again results in even more $x$ and even less $y$, etcetera. Vice versa for an initial slight abundance of $y$. There is thus a precarious balance when $x = y$ (the unstable fixed point at $(1,1)$ for $r > 2$). On the other hand, when the mutual repression rate $r$ is low, both genes can be expressed in equal amounts. (For large $r$, this system might be called a winner-takes-all model, or a competitive model).
-
-\Cref{fig:gene_phases} shows the different types of phase portrait that occur as $r \ge 0$ is varied. \Cref{fig:gene_bifurc} sketches the bifurcation diagram for this gene expression model.
+\Cref{fig:gene_phases} shows the different types of phase portrait that occur as $r \ge 0$ is varied. \Cref{fig:gene_bifurc} sketches the bifurcation diagram.
 
 \begin{figure}
 \img[0.4]{1_2_star}
 \img[0.4]{1_2_at_the_fork}
 \img[0.4]{1_2_WTA}
+\captionn{Topologies of phase space}{\emph{Left}: $r = 0$. The single fixed point is an attracting star node. (For the intermediate case between $r = 0$ and $r = 2$, see \cref{fig:genes_r1}).\emph{Middle}: $r = 2$. There is still only one fixed point. Because we are exactly at the bifurcation point, the approach to the fixed point occurs very slowly (i.e. no longer exponentially fast). This is known as critical slowing down. \emph{Right}: $r = 3$. There are three fixed points: a saddle point at $(1,1)$, and two attracting nodes (mirror symmetric around $y = x$).}
 \label{fig:gene_phases}
 \end{figure}
 
 \begin{figure}
-\img[0.7]{1_2_bifurc_sketch}
+\img[0.6]{1_2_bifurc_sketch}
+\img[0.4]{1_2_subspace}
+\captionn{The gene control model undergoes a supercritical pitchfork bifurcation}{\emph{Left}: sketch of the bifurcation diagram. The vertical axis denotes distance in the bifurcation subspace from the $(1, 1)$ point. \emph{Right}: the one-dimensional bifurcation subspace embedded in two-dimensional phase space.}
 \label{fig:gene_bifurc}
 \end{figure}

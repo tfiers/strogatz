@@ -2,3 +2,5 @@ temp/
 *.fls
 *.synctex.gz
 .ipynb_checkpoints/
+coco/
+data/
