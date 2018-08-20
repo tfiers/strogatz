@@ -3,7 +3,7 @@
 
 
 \chapter{Study of a predator-prey model}
-% 0,1  1,5     0,38  0,48
+
 
 
 We study the system
@@ -15,7 +15,7 @@ We study the system
 %
 with $a = 0.1$ and $b = 1.5$. The following could be an ecological interpretation of this system as a predator-prey model:
 
-The $-d$ term represents a constant decline of species $y$; This would correspond to a linear decrease in $y$ over time, with slope $d$, if this was the only term present. Maybe an environmental agency eliminates a fixed number $d$ of $y$-type animals every time period, to keep the ecosystem in check.
+The $-d$ term represents a constant decline of species $y$; This would correspond to a linear decrease in $y$ over time, with slope $d$, if this was the only term present. Maybe an environmental agency eliminates a fixed number $d$ of $y$-type animals every time period, to keep the ecosystem balanced.
 
 The $-cy$ term represents a proportional pressure on $y$, corresponding to an exponential decline of $y$ over time with time constant $1/c$ (i.e. faster decline for larger $c$). There might be a fixed amount of resources available for the $y$ species. Then, a larger number of $y$ animals will result in a proportionally smaller amount of resources per animal.
 
@@ -23,10 +23,20 @@ The $xy$ term represents a growth of $y$ that is both proportional to the other 
 
 The $-bxy$ term represents a decline of the $x$ species proportional to both itself and to the other species $y$. For constant $y$, this would correspond to an exponential decline of $x$ with time constant $1/(by)$. The $y$ parasite might be pathological for $x$. Both more parasites $y$ and more hosts $x$ yield a higher probability of transmitting the parasite between hosts.
 
-Finally, the $x (1-x)$ factors of the first term describe logistic growth (i.e. exponential growth, which switches to exponential slowing down when the carrying capacity of $1$ is nearly reached). This is a common model for constrained species growth. The $(x-a)$ multiplier has the effect that the growth does not start until $x$ reaches $a$: for $x < a$, the species will decline instead of grow. This could model the fact that more than a few individuals are necessary for succesful long-term reproduction.
+Finally, the $x (1-x)$ factor of the first term describes logistic growth (i.e. exponential growth from the origin, which switches halfway to exponential decay up to a carrying capacity -- which is $1$ in this case). This is a common model for constrained species growth. The $(x-a)$ multiplier has the effect that the growth does not start until $x$ reaches $a$: for $x < a$, the species will decline instead of grow. This could model the fact that more than a few individuals are necessary for succesful long-term reproduction.
+
 
 
 
 \section{A qualitative study for $d = 0$}
+% 0,1  1,5     0,38  0,48
+
+Simulating the system for $y = 0$ confirms the predictions made above for the standalone behaviour of $x(t)$ (\cref{fig:time_sim}): logistic growth above the threshold $a$, decay to zero below this threshold.
+
+\begin{figure}
+\img[1]{time_sim}
+\captionn{Behaviour of $\bm{x}$ without $\bm{y}$}{Simulated trajectories $x(t)$ for $y = 0$, for different initial values $x_0$ (From top to bottom: \numlist{1.5; 1.1; 1.0; 0.9; 0.5; 0.13; 0.1; 0.07; 0}). Note the stable fixed points at $0$ and at the carrying capacity $1$, and the unstable fixed point at $a = 0.1$.}
+\label{fig:time_sim}
+\end{figure}
 
 
