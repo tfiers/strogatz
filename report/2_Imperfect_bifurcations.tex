@@ -1,19 +1,20 @@
 % !tex root = ./NLS_Report.tex
+\graphicspath{{../figures/2/}}
 
 
 \chapter{Imperfect bifurcations}
 
-When $h$ is varied, we observe saddle-node bifurcations for $r > 0$ (see \cref{fig:h_u}). For $r = 0$, these two points coalesce into a single degenerate bifurcation point at $h = 0$, where $u$ experiences critical slowing down as it approaches the origin.
+When $h$ is varied, we observe saddle-node bifurcations for $r > 0$ (see \cref{fig:h_u}). For $r = 0$, these two points coalesce into a single degenerate bifurcation point at $h = 0$, where $u$ experiences critical slowing down as it approaches the origin. This is a codimension-2 bifurcation.
 
 \begin{figure}
 \img[0.4]{r_-1}
 \img[0.4]{r_0}
 \img[0.4]{r_1}
-\captionn{$\bm{(h,u)}$-bifurcation diagrams}{Blue dots are stable equilibria, red dots are unstable equilibria, and large red circles indicate saddle-node bifurcations. Left: $r = -1$. (Phase space topologies for other $r < 0$ are equivalent). Center: $r = 0$. Right: $r = 1$. (Phase space topologies for other $r > 0$ are equivalent).}
+\captionn{$\bm{(h,u)}$-bifurcation diagrams}{Blue lines denote stable equilibria, red lines denote unstable equilibria, and red circles indicate saddle-node bifurcations. Left: $r = -1$. (Phase space topologies for other $r < 0$ are equivalent). Center: $r = 0$. Right: $r = 1$. (Phase space topologies for other $r > 0$ are equivalent).}
 \label{fig:h_u}
 \end{figure}
 
-% When on the other hand 
+When $r$ is varied, only one saddle-node bifurcation can be observed for each fixed $h$ (\cref{fig:r_u}). The saddle-node appears at positive $u$ for negative $h$, and vice versa. For $h = 0$, the system undergoes a supercritical pitchfork bifurcation (at $r = 0, u = 0$). $h$ is an `imperfection' parameter: without it, the system is symmetric (i.e. identical for $u = -u$).
 
 \begin{figure}
 \img[0.4]{h_neg}
@@ -23,10 +24,34 @@ When $h$ is varied, we observe saddle-node bifurcations for $r > 0$ (see \cref{f
 \label{fig:r_u}
 \end{figure}
 
+
+\Cref{fig:fold_curve} shows the continuation curve of the saddle-node bifurcations. We note that there are indeed no saddle-node bifurcations for $r < 0$, and that there are two possible saddle-node bifurcations for $r > 0$, as already seen in \cref{fig:r_u,fig:h_u}. The symmetries observed in those figures are also apparent here. The codimension-2 bifurcation is visible in the $(r,h)$ plane as the cusp point at $(0,0)$ (where the two branches meet tangentially). In $(u,r,h)$-space, the continuation curve has a spiral-like shape. It starts out in the $(+,+,-)$-octant, climbing towards the $(0,0,0)$ cusp point, where it is locally flat along the $h$-axis. It then continues its climb in the $(-,-,+)$-octant.
+
 \begin{figure}
 \img[0.4]{bf_branch_u_r}
 \img[0.4]{bf_branch_u_h}
 \img[0.4]{bf_branch_r_h}
-\captionn{The fold curve}{Continuation of the saddle-node bifurcations (the large red dots in \cref{fig:h_u,fig:r_u}), projected on the $(u,r)$, $(u,h)$, and $(r,h)$ planes.}
+\captionn{Fold curve}{Continuation of the saddle-node bifurcations (the red circles in \cref{fig:h_u,fig:r_u}), projected on the $(u,r)$, $(u,h)$, and $(r,h)$ planes.}
 \label{fig:fold_curve}
+\end{figure}
+
+
+We now discuss some parameters of the numeric continuation algorithm used \cite{Schilder2018}. \texttt{cont.ItMX} is the maximum number of continuation steps taken along a branch. Reducing this parameter (in conjunction with shorter step sizes) results in shorter found branch segments.
+
+For each continuation step, a solution (i.e. a fixed point) is searched for some parameter step size $\Delta h$. The maximum number of iterations of this root-finding phase can be specified with \texttt{corr.ItMX}. If no root is found within this number of iterations, the parameter step size $\Delta h$ is reduced, and the root-finding phase repeats. The maximum and minimum step sizes $\Delta h$ can be set using \texttt{h\_max} and \texttt{h\_min}, respectively.
+
+Choosing step sizes \texttt{h\_max} that are too large can result in missed branches (\cref{fig:numerics}). The continuation algorithm assumes a relatively smooth branch shape. When $h$ becomes very small however, the derivative along the branch at $(0, 0)$ becomes very steep, and this assumption is violated. Only with small step sizes can the branch still be followed. Choosing \emph{minimum} step sizes \texttt{h\_min} that are too large can also miss branches, or even report non-existent saddle-node bifurcations (\cref{fig:two_SN}).
+
+\begin{figure}
+\img[0.4]{close}
+\img[0.4]{very_close_coarse}
+\img[0.4]{very_close_fine}
+\captionn{Continuation is a discrete process}{Bifurcation diagrams for $h = -0.0025$ (left) and $h = -0.0005$ (center and right). Each dot is the solution of one continuation step. Colors as in \cref{fig:h_u}. The (maximum) step size \texttt{h\_max = 0.2} is identical in the left and center figures; yet in the center figure, the lower stable branch is not found. When the step size is decreased to \texttt{h\_max = 0.05} however, the lower branch is found (right). (Other parameters were left to their default COCO settings: \texttt{cont.ItMX = 100}, \texttt{corr.ItMX = 10}, \texttt{h\_max = 0.01}, etc).}
+\label{fig:numerics}
+\end{figure}
+
+\begin{figure}
+\img[0.4]{two_SN}
+\captionn{Incorrect second saddle-node bifurcation}{Bifurcation diagram for $h = -0.0025$ and \texttt{h\_min = h\_max = 0.2}. (Other parameter settings as in \cref{fig:numerics}). Note the missed unstable branch, and the two saddle-node bifurcations (where there should only be one).}
+\label{fig:two_SN}
 \end{figure}

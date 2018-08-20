@@ -1,4 +1,4 @@
-close all;
+% close all;
 
 % fixed value for r
 % r_fix = 0.5;
@@ -6,6 +6,7 @@ close all;
 %% find first branch
 prob = coco_prob();
 prob = coco_set(prob, 'ode', 'vectorized', false);
+prob = coco_set(prob, 'cont', 'h_max', h_max);
 
 prob = ode_isol2ep(prob, '', @ex2_system, 0, {'r', 'h'}, [r_fix, 0]);
 bd1 = coco(prob, 'tcbif', [], 1, {'h'}, [-2, 2]);
@@ -19,8 +20,11 @@ h = coco_bd_col(bd1, 'h');
 ustab = coco_bd_col(bd1, 'ep.test.USTAB');
 ustab_idxs = find(ustab == 1);
 stab_idxs = find(ustab == 0);
-plot(h(stab_idxs), x(stab_idxs), 'b.');
-plot(h(ustab_idxs), x(ustab_idxs), 'r.');
+stab_idxs_A = stab_idxs(1:length(stab_idxs)/2);
+stab_idxs_B = stab_idxs(length(stab_idxs)/2+1:end);
+plot(h(ustab_idxs), x(ustab_idxs), 'r-');
+plot(h(stab_idxs_A), x(stab_idxs_A), 'b-');
+plot(h(stab_idxs_B), x(stab_idxs_B), 'b-');
 ylim([-2.5,2.5]);
 
 idx = coco_bd_idxs(bd1, 'SN');

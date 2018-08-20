@@ -1,4 +1,5 @@
 % !tex root = ./NLS_Report.tex
+\graphicspath{{../figures/1/}}
 
 
 \chapter{Stability of equilibrium points \& bifurcations}
@@ -58,9 +59,9 @@ y (1+x^r) &= 2.
 It is easily verified that $(1,1)$ is a solution and hence a fixed point. We have already shown that it is the only fixed point for $r = 0$. Plotting the gradient in phase space for different $r \in (0, 2)$ strongly suggests that it is also the only fixed point for nonzero $r < 2$ (at least for $x \geq 0$ and $y \geq 0$). See e.g. \cref{fig:genes_r1} for $r = 1$. As a final piece of evidence, different trajectories simulated back in time all either tend towards $(\infty, \infty)$ or cross into forbidden $x < 0,\ y < 0$ territory.
 
 \begin{figure}
-\img[0.4]{1_2_streamline_close}
-\img[0.4]{1_2_quiver_close}
-\img[0.4]{1_2_quiver_far}
+\img[0.4]{streamline_close}
+\img[0.4]{quiver_close}
+\img[0.4]{quiver_far}
 \captionn{There is only one fixed point for $\bm{0 \leq r \leq 2}$}{Phase space plots of the gene control model, for $r = 1$ and $\alpha_1 = \alpha_2 = 2$. \emph{Left}: some (partial) trajectories in phase space. Thicker lines represent a higher local speed. Note the attractor at $(1, 1)$. \emph{Middle}: local velocities, evaluated on a grid. \emph{Right}: same as middle, but for a larger region in phase space.}
 \label{fig:genes_r1}
 \end{figure}
@@ -94,16 +95,16 @@ Based on phase space plots for different values of $r$, it seems that a supercri
 \Cref{fig:gene_phases} shows the different types of phase portrait that occur as $r \ge 0$ is varied. \Cref{fig:gene_bifurc} sketches the bifurcation diagram.
 
 \begin{figure}
-\img[0.4]{1_2_star}
-\img[0.4]{1_2_at_the_fork}
-\img[0.4]{1_2_WTA}
+\img[0.4]{star}
+\img[0.4]{at_the_fork}
+\img[0.4]{WTA}
 \captionn{Topologies of phase space}{\emph{Left}: $r = 0$. The single fixed point is an attracting star node. (For the intermediate case between $r = 0$ and $r = 2$, see \cref{fig:genes_r1}).\emph{Middle}: $r = 2$. There is still only one fixed point. Because we are exactly at the bifurcation point, the approach to the fixed point occurs very slowly (i.e. no longer exponentially fast). This is known as critical slowing down. \emph{Right}: $r = 3$. There are three fixed points: a saddle point at $(1,1)$, and two attracting nodes (mirror symmetric around $y = x$).}
 \label{fig:gene_phases}
 \end{figure}
 
 \begin{figure}
-\img[0.6]{1_2_bifurc_sketch}
-\img[0.4]{1_2_subspace}
+\img[0.6]{bifurc_sketch}
+\img[0.4]{subspace}
 \captionn{The gene control model undergoes a supercritical pitchfork bifurcation}{\emph{Left}: sketch of the bifurcation diagram. The vertical axis denotes distance in the bifurcation subspace from the $(1, 1)$ point. \emph{Right}: the one-dimensional bifurcation subspace embedded in two-dimensional phase space.}
 \label{fig:gene_bifurc}
 \end{figure}
