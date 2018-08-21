@@ -31,12 +31,35 @@ Finally, the $x (1-x)$ factor of the first term describes logistic growth (i.e. 
 \section{A qualitative study for $d = 0$}
 % 0,1  1,5     0,38  0,48
 
-Simulating the system for $y = 0$ confirms the predictions made above for the standalone behaviour of $x(t)$ (\cref{fig:time_sim}): logistic growth above the threshold $a$, decay to zero below this threshold.
+Simulating the system for $y = 0$ confirms the predictions made above for the standalone behaviour of $x(t)$ (\cref{fig:time_sim}): logistic growth above the threshold $a$, and decay to zero below this threshold.
 
 \begin{figure}
 \img[1]{time_sim}
-\captionn{Behaviour of $\bm{x}$ without $\bm{y}$}{Simulated trajectories $x(t)$ for $y = 0$, for different initial values $x_0$ (From top to bottom: \numlist{1.5; 1.1; 1.0; 0.9; 0.5; 0.13; 0.1; 0.07; 0}). Note the stable fixed points at $0$ and at the carrying capacity $1$, and the unstable fixed point at $a = 0.1$.}
+\captionn{Behaviour of $\bm{x}$ without $\bm{y}$}{Simulated trajectories $x(t)$ for $y = 0$ and different initial values $x_0$ (from top to bottom: \numlist{1.5; 1.1; 1.0; 0.9; 0.5; 0.13; 0.1; 0.07; 0}). Note the stable fixed points at $0$ and at the carrying capacity $1$, and the unstable fixed point at $a = 0.1$.}
 \label{fig:time_sim}
 \end{figure}
 
+The system has four fixed points for $d = 0$. 
 
+\begin{table}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\multicolumn{2}{l}{Fixed point}              \\ \cmidrule(r){1-2}
+$x$ & $y$              & Topology            \\
+\midrule
+$0$ & $0$              & Attracting node     \\[1.2em]
+$1$ & $0$              &                     \\[1.2em]
+$a$ & $0$              &                     \\[1.2em]
+$c$ & $(a-c)(c-1)/b$   &                     \\[1.2em]
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+\begin{figure}
+\img[0.7]{eigenheart}
+\captionn{Limit cycle eigenvalues}{Eigenvalues of the Jacobian at the fixed point $(c,\  (a-c)(c-1)/b)$, for different parameter values $c \in [0, 0.9]$ ($c = 0$ in the middle of the heart, $c = 0.9$ on the far left).}
+\label{fig:eigenheart}
+\end{figure}
