@@ -76,7 +76,7 @@ The final fixed point, $(c,\ (c-a)(1-c)/b)$, has a wider range of behaviours (\c
 \label{fig:eigenheart}
 \end{figure}
 
-The separatrices between basins of attraction are the stable manifolds of saddles.
+% The separatrices between basins of attraction are the (backwards trajectories starting along stable eigendirections).
 
-The stable manifold of a saddle $(x^*,\ y^*)$ can be found numerically by simulating a trajectory back in time. The initial point of this trajectory is $(x^* + \Delta x,\ y^* + \Delta y)$, where $\Delta x$ and $\Delta y$ are small perturbations from the fixed point on the line spanned by the eigenvector of the Jacobian corresponding to this manifold (i.e. the eigenvector with a positive eigenvalue).
+The stable manifold of a saddle at $(x^*,\ y^*)$ can be found numerically by simulating a trajectory back in time. The initial point of this trajectory is $(x^* + \Delta x,\ y^* + \Delta y)$, where $\Delta x$ and $\Delta y$ are small perturbations along the eigenvector of the Jacobian corresponding to this manifold (i.e. the eigenvector with a positive eigenvalue).
 
