@@ -54,7 +54,7 @@ Fixed point  & Eigenvalues  & Eigenvectors \\
              & $a-c$        & $(ab/(c-a^2),\ 1)$    \\[1.2em]
 \multirow{2}{*}
 {$(1,\ 0)$}  & $a-1$        & $(1,\ 0)$             \\[0.2em]
-             & $1-c$        & $(-b/(2-c-a),\ 1)$     \\
+             & $1-c$        & $(-b/(2-c-a),\ 1)$    \\
 \bottomrule
 \end{tabular}
 \captionn{Fixed points on the $\bm{x}$-axis}{$(x,y)$-coordinates of the fixed points, and eigenvalue-eigenvector pairs of the Jacobian.}
@@ -67,7 +67,9 @@ $(a,\ 0)$ is a saddle when $c > a$. Its stable manifold is then the $x$-axis, an
 
 $(1,\ 0)$ is a saddle when $c < 1$. With $a = 0.1$, the stable manifold is the $x$-axis, and the unstable manifold is locally spanned by $(-b/(2-c-a),\ 1)$, which is an upwards pointing vector, rotated slightly \emph{left}. When $c > 1$, both dimensions become stable, and $(1,\ 0)$ is then an attracting node. Because $c < 1.5$ in this exercise, the slow eigendirection is $(-b/(2-c-a),\ 1)$.
 
-The final fixed point, $(c,\ (c-a)(1-c)/b)$, has a wider range of behaviours (\cref{fig:eigenheart}). It is a saddle for $c > 1$, and for $0 < c < a$. It is an unstable node for $a < c < c_u$, an unstable spiral for $c_u < c < (a+1)/2$, a stable spiral for $(a+1)/2 < c < c_s$, and a stable node for $c_s < c < 1$. For $a = 0.1$, $c_u$ and $c_s$ are numerically determined to be $c_u = 0.1259..$ and $c_s = 0.8783..$.
+The final fixed point, $(c,\ (c-a)(1-c)/b)$, has a wider range of behaviours (\cref{fig:eigenheart}). It is a saddle for $c > 1$, and for $0 < c < a$. It is an unstable node for $a < c < c_u$, an unstable spiral for $c_u < c < (a+1)/2$, a stable spiral for $(a+1)/2 < c < c_s$, and a stable node for $c_s < c < 1$. $c_u$ and $c_s$ are the solutions to 
+
+For $a = 0.1$, $c_u$ and $c_s$ are numerically determined to be $c_u = 0.1259..$ and $c_s = 0.8783..$.
 
 \begin{figure}
 \img[0.55]{eigenheart}
@@ -76,7 +78,5 @@ The final fixed point, $(c,\ (c-a)(1-c)/b)$, has a wider range of behaviours (\c
 \label{fig:eigenheart}
 \end{figure}
 
-% The separatrices between basins of attraction are the (backwards trajectories starting along stable eigendirections).
-
-The stable manifold of a saddle at $(x^*,\ y^*)$ can be found numerically by simulating a trajectory back in time. The initial point of this trajectory is $(x^* + \Delta x,\ y^* + \Delta y)$, where $\Delta x$ and $\Delta y$ are small perturbations along the eigenvector of the Jacobian corresponding to this manifold (i.e. the eigenvector with a positive eigenvalue).
+The separatrices between basins of attraction are the stable manifolds of saddles. The stable manifold of a saddle at $(x^*,\ y^*)$ can be found numerically by simulating a trajectory back in time. The initial point of this trajectory is $(x^* + \Delta x,\ y^* + \Delta y)$, where $\Delta x$ and $\Delta y$ are small perturbations along the eigenvector of the Jacobian corresponding to this manifold (i.e. the eigenvector with a positive eigenvalue).
 
