@@ -39,23 +39,35 @@ Simulating the system for $y = 0$ confirms the predictions made above for the st
 \label{fig:time_sim}
 \end{figure}
 
-The system has four fixed points for $d = 0$. 
+The system has four fixed points for $d = 0$. Three of these lie on the $x$-axis. They are listed in \cref{tab:fpx}, together with the eigenvalues and corresponding eigenvectors of the Jacobian in these points. The fourth fixed points has coordinates $(c,\ (c-a)(1-c)/b)$, and the eigenstructure of its Jacobian is rather more.. complex. The trace $\tau$ and the determinant $\Delta$ have simpler analytical expressions however: $\tau = c(1+a-2c)$ and $\Delta = c(c-a)(1-c)$. The following paragraphs describe the topological structure near these four fixed points.
 
 \begin{table}
-\begin{tabular}{@{}lll@{}}
+\begin{tabular}{@{}llll@{}}
 \toprule
-\multicolumn{2}{l}{Fixed point}              \\ \cmidrule(r){1-2}
-$x$ & $y$              & Topology            \\
+Fixed point  & Eigenvalues  & Eigenvectors \\
 \midrule
-$0$ & $0$              & Attracting node     \\[1.2em]
-$1$ & $0$              &                     \\[1.2em]
-$a$ & $0$              &                     \\[1.2em]
-$c$ & $(a-c)(c-1)/b$   &                     \\[1.2em]
+\multirow{2}{*}
+{$(0,\ 0)$}  & $-a$         & $(1,\ 0)$             \\[0.2em]
+             & $-c$         & $(0,\ 1)$             \\[1.2em]
+\multirow{2}{*}
+{$(a,\ 0)$}  & $a-a^2$      & $(1,\ 0)$             \\[0.2em]
+             & $a-c$        & $(ab/(c-a^2),\ 1)$    \\[1.2em]
+\multirow{2}{*}
+{$(1,\ 0)$}  & $a-1$        & $(1,\ 0)$             \\[0.2em]
+             & $1-c$        & $(-b/(2-c-a),\ 1)$     \\
 \bottomrule
 \end{tabular}
+\captionn{Fixed points on the $\bm{x}$-axis}{$(x,y)$-coordinates of the fixed points, and eigenvalue-eigenvector pairs of the Jacobian.}
+\label{tab:fpx}
 \end{table}
 
+$(0,\ 0)$ is an attractor node. In the common case that $c > a = 0.1$, the $x$-axis is the slow eigendirection. When $c < a$, the $y$-axis is the slow eigendirection.
 
+$(a,\ 0)$ is a saddle when $c > a$. Its stable manifold is then the $x$-axis, and its unstable manifold is locally spanned by $(ab/(c-a^2),\ 1)$, which is an upwards pointing vector, rotated slightly right. When $c < a$, both dimensions are unstable, and $(a,\ 0)$ is then a repellor node. For $c > a^2$, the slow eigendirection is $(ab/(c-a^2),\ 1)$. For $c < a^2$, the $x$-axis is the slow eigendirection.
+
+$(1,\ 0)$ is a saddle when $c < 1$. With $a = 0.1$, the stable manifold is the $x$-axis, and the unstable manifold is locally spanned by $(-b/(2-c-a),\ 1)$, which is an upwards pointing vector, rotated slightly \emph{left}. When $c > 1$, both dimensions become stable, and $(1,\ 0)$ is then an attracting node. Because $c < 1.5$ in this exercise, the slow eigendirection is $(-b/(2-c-a),\ 1)$.
+
+Finally, 
 
 
 \begin{figure}
