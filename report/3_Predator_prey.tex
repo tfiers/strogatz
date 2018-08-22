@@ -101,7 +101,7 @@ This technique is used in \cref{fig:beautiful_phase_spaces} to draw the separatr
 \img[0.5]{phase_space_07000}
 \img[0.5]{phase_space_09200}
 \img[0.5]{phase_space_11000} \\[0.3em]
-\captionn{Phase space diagrams for different predator decay rates $\bm{c}$}{Fixed points are indicated with colored circles. Their manifolds of attraction are given the same color. (At $c = 0$, the entire $y$-axis consists of fixed points). The limit cycle for $c_h = 0.446... < c < 0.55$, its basin of attraction, and its period $T$, are indicated in purple.}
+\captionn{Phase space diagrams for different predator decay rates $\bm{c}$}{Colored circles represent fixed points. Their manifolds of attraction are indicated with the same color. (At $c = 0$, the entire $y$-axis consists of fixed points). The limit cycle for $c_h = 0.446... < c < 0.55$, its basin of attraction, and its period $T$ are indicated in purple.}
 \label{fig:beautiful_phase_spaces}
 \end{figure}
 \end{landscape}
@@ -111,3 +111,12 @@ This technique is used in \cref{fig:beautiful_phase_spaces} to draw the separatr
 This sequence of behaviours of the last fixed point can also be observed by following the eigenvalues $\lambda_i$ of its Jacobian in the complex plane (\cref{fig:eigenheart}). For $c > 1$, the eigenvalues start out on opposite ends of the real axis, and the fixed point is indeed a saddle. When $c$ then decreases, the eigenvalues move closer together, until the right eigenvalue (say $\lambda_2$) crosses the origin and enters stable territory, at $c = 1$. The fixed point is then a stable node, until $c = c_s = 0.8783..$. There, the eigenvalues meet on the negative real axis, only to immediately part again. The eigenvalues leave the real axis in opposite directions, tracing symmetric paths that bend towards the $y$-axis. The fixed point is then a stable spiral, up until the eigenvalues cross the $y$-axis. This happens at $c = 0.55$, and the fixed point is then locally surrounded by closed orbits. When $c$ decreases further, the eigenvalues continue their heart-shaped paths in the right half plane, while the fixed point is an unstable spiral. The eigenvalues meet again on the positive real axis, when $c = c_u = 0.1259..$. The fixed point is then a repellor node, while the eigenvalues move in opposite directions on the real axis, towards their initial locations (left for $\lambda_1$, right for $\lambda_2$). At $c = a = 0.1$, $\lambda_1$ crosses into the left half plane, making the fixed point a saddle point. This continues until $c = 0$, when both eigenvalues arrive at the origin, and the fixed point disappears.
 
 Between $0.446... < c < 0.55$, the phase portrait contains a limit cycle (the purple orbit in \cref{fig:beautiful_phase_spaces}). The parameter value where the limit cycle first appears is determined numerically to be $c_h =0.44597197$. For increasing $c$, the limit cycle tightens around the center fixed point, until it coalesces with it at $c = (1+a)/2 = 0.55$. The fixed point is then an attracting spiral with a large basin of attraction. Going back in the other direction, for decreasing $c$, both the orbit period and the limit cycle become increasingly large. In the limit for $c = c_h$, the limit cycle coincides with the stable manifolds of the two neighbouring saddle points ($(a,\ 0)$ and $(1,\ 0)$), and the orbit period becomes infinite. At this bifurcation point $c = c_h$, the two saddle points on the $x$-axis are connected in a heteroclinic orbit. Analogously to the `homoclinic bifurcation' from \citefull{Strogatz1994}, this bifurcation could be called a `heteroclinic bifurcation'.
+
+\begin{figure}
+\img[0.6]{xy_sim_harmonic}
+\img[0.6]{xy_sim_heteroclinic}
+\captionn{Limit cycle simulations}{Simulated trajectories $x(t)$ and $y(t)$ for a near-harmonic oscillation (left, $c = 0.55$) and a near-heteroclinic orbit (right, $c = 0.46$). In both simulations, the initial phase point was $(0.42, 0.12)$.}
+\label{fig:lc_sims}
+\end{figure}
+
+
