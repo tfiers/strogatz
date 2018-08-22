@@ -4,4 +4,39 @@
 
 \chapter{Aero-elastic galloping}
 
+From Newton's second law and the definitions of linear acceleration $\ddot{y}$ and speed $\dot{y}$, the motion of the bridge element is described by
+%
+\begin{align*}
+\dot{x} &= - \qty(\rho\ V^2\ a\ C(x/V)\ /2  +  r x  +  k y) / m \\
+\dot{y} &= x
+\end{align*}
+%
+with $m, \rho, r, k, a, $ and $C(\alpha)$ as given.
 
+
+\Cref{fig:eigencup} shows the eigenvalues of Jacobian at the fixed point (at the origin) as a function of $V$. At $V = V_C = 809.37...$ the eigenvalues land on the real axis, and the system undergoes a bifurcation. $V_C$ was determined numerically as the solution to $4 \Delta = \tau^2$ (see \cref{sec:predator}). Additionally, the trace of the Jacobian is $\tau = -0.023475.. V − 1$. For every $V \geq 0$, $\tau < 0$. Hence, the fixed point is locally never an unstable spiral or node, but rather a stable spiral or node. Based on this linear analysis, we can classify the stability of the fixed point as in \cref{tab:fp_class}.
+
+\begin{figure}
+\img[0.8]{eigencup}
+\captionn{Linear stability analysis of the bridge model}{Eigenvalues of the Jacobian at the fixed point $(0,0)$, for $V \in [0, 1000]$ ($V = 0$ at the ends of the bends, near the imaginary axis).}
+\label{fig:eigencup}
+\end{figure}
+
+\begin{table}
+\begin{tabular}{@{}ll@{}} \toprule
+Wind speed $V$  & Stability of origin \\\midrule
+$V < V_C$  &      Stable spiral  \\[1em]
+$V = 0$    &      Stable star  \\[1em]
+$V > V_C$  &      Stable node  \\[1em]
+\bottomrule
+\end{tabular}
+\captionn{Classification of the fixed point}{}
+\label{tab:fp_class}
+\end{table}
+
+
+\begin{figure}
+\img[1]{bridge_phase}
+\captionn{Phase space diagram of the bridge model}{Here for $V = 300$.}
+\label{fig:bridge_phase}
+\end{figure}
