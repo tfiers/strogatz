@@ -1,0 +1,45 @@
+% !tex root = ./NLS_Report.tex
+\graphicspath{{../figures/5/}}
+
+
+\chapter{Chaos}
+
+
+
+\section{Lyapunov exponents of the Lorenz equations}
+
+The algorithm integrates both an initial phase point and the spatial gradient of the phase point along the trajectory over fixed time steps \texttt{st} (via the simplest first order Euler method). Next, an orthogonal basis is sought for the new spatial gradient, via the Gram-Schmidt algorithm. The cumulative sum of logarithms of the Gram-Schmidt scaling factors divided by the total time elapsed is then the estimate of the Lyapunov exponent. This is integration-orthogonalisation loop is repeated for a given number of iterations \texttt{kkmax}.
+
+When the time step is too large (e.g. \texttt{st = 0.1} here), the exponents diverge. When it is too small on the other hand (\texttt{st = 0.001} here), the convergence is extremely slow. Even for a balanced time step (like \texttt{st = 0.01} here), enough iterations need to be taken yield a decent result (e.g. \texttt{kkmax > 400} here; see \cref{fig:LE_Lorenz}). The initial phase point also influences the results. A different phase point as in \cref{fig:LE_Lorenz} ($(6,6,6)$) yields better estimates for example ($0.89, -0.04, $ and $-14$).
+
+Interestingly, using a more advanced ODE solver (like a higher order Runge-Kutta method) or orthogonalisation algorithm (like a singular value decompostion via the QR-algorithm) yields markably worse results.
+
+
+\begin{figure}
+\img[0.8]{LE_Lorenz}
+\captionn{Estimating Lyapunov exponents of the Lorenz system}{Initial phase point $(1,1,1)$. Final exponent estimates are $0.79, -0.07, $ and $-14.7$.}
+\label{fig:LE_Lorenz}
+\end{figure}
+
+
+
+
+
+
+\section{Hindmarsh-Rose neuron model}
+
+Time series and phase space plots (projected on the three coordinate planes).
+
+\begin{figure}
+\img[1.1]{random_burst_structure}\\[4em]
+\img[1.1]{burst_generation}\\[1em]
+\captionn{Hindmarsh-Rose neuron model}{See text for details.}
+\label{fig:neuron}
+\end{figure}
+
+
+
+
+\section{Chua's circuit}
+
+
