@@ -7,6 +7,7 @@
 
 
 \section{Lyapunov exponents of the Lorenz equations}
+\label{sec:lorenz}
 
 The algorithm integrates both an initial phase point and the spatial gradient of the phase point along the trajectory over fixed time steps \texttt{st} (via the simplest first order Euler method). Next, an orthogonal basis is sought for the new spatial gradient, via the Gram-Schmidt algorithm. The cumulative sum of logarithms of the Gram-Schmidt scaling factors divided by the total time elapsed is then the estimate of the Lyapunov exponent. This is integration-orthogonalisation loop is repeated for a given number of iterations \texttt{kkmax}.
 
@@ -28,12 +29,12 @@ Interestingly, using a more advanced ODE solver (like a higher order Runge-Kutta
 
 \section{Hindmarsh-Rose neuron model}
 
-Time series and phase space plots (projected on the three coordinate planes).
+The system behaves chaotically in random burst mode (\cref{fig:neuron}, top): even the tiniest perturbation to the initial phase point renders $x(t)$eventually unpredictable. The burst generation mode is not chaotic: even relatively large perturbations do not qualitatively change the phase space trajectories (\cref{fig:neuron}, bottom).
 
 \begin{figure}
-\img[1.1]{random_burst_structure}\\[4em]
-\img[1.1]{burst_generation}\\[1em]
-\captionn{Hindmarsh-Rose neuron model}{See text for details.}
+\img[1]{random_burst_structure}\\[3em]
+\img[1]{burst_generation}\\[0.5em]
+\captionn{Hindmarsh-Rose neuron model}{See text for interpretation. (In random burst mode, the initial slow current was $z(0) = 3$, while in burst generation mode, it was $z(0) = 0$. Other parameters as instructed).}
 \label{fig:neuron}
 \end{figure}
 
@@ -42,4 +43,18 @@ Time series and phase space plots (projected on the three coordinate planes).
 
 \section{Chua's circuit}
 
+A simulation of the Chua circuit displays chaotic behaviour (\cref{fig:chua}). Estimating the Lyapunov exponents according to the method of \cref{sec:lorenz} confirms this: the largest exponent $\approx 0.16 > 0$ (\cref{fig:LE_chua}).
 
+
+\begin{figure}
+\img[1.25]{chua}
+\captionn{Chua circuit model}{Time series (top) and phase space projections (bottom). Note the chaotic behaviour and the double-scroll dynamics. (Initical condition $(1, y_0, 0)$, with $y_0$ as indicated).}
+\label{fig:chua}
+\end{figure}
+
+\begin{figure}
+\img[0.6]{LE_chua_A}
+\img[0.6]{LE_chua_B}
+\captionn{Estimating Lyapunov exponents of the Chua circuit}{\Left: \texttt{st = 0.01}, final largest exponent $0.146$. \Right: \texttt{st = 0.005}, final largest exponent $0.184$.}
+\label{fig:LE_chua}
+\end{figure}
