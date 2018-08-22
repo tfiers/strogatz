@@ -25,6 +25,15 @@ The $-bxy$ term represents a decline of the $x$ species proportional to both its
 
 Finally, the $x (1-x)$ factor of the first term describes logistic growth (i.e. exponential growth from the origin, which switches halfway to exponential decay up to a carrying capacity -- which is $1$ in this case). This is a common model for constrained species growth. The $(x-a)$ multiplier has the effect that the growth does not start until $x$ reaches $a$: for $x < a$, the species will decline instead of grow. This could model the fact that more than a few individuals are necessary for succesful long-term reproduction.
 
+In summary, the parameters $(a,b,c,d)$ could be given the following names:
+
+\begin{deflist}
+\notation{a}{Minimum prey population}
+\notation{b}{Predator lethality}
+\notation{c}{Predator decay rate}
+\notation{d}{External predator elimination rate}
+\end{deflist}
+
 
 
 
@@ -35,7 +44,7 @@ Simulating the system for $y = 0$ confirms the predictions made above for the st
 
 \begin{figure}
 \img[1]{time_sim}
-\captionn{Behaviour of $\bm{x}$ without $\bm{y}$}{Simulated trajectories $x(t)$ for $y = 0$ and different initial values $x_0$ (from top to bottom: \numlist{1.5; 1.1; 1.0; 0.9; 0.5; 0.13; 0.1; 0.07; 0}). Note the stable fixed points at $0$ and at the carrying capacity $1$, and the unstable fixed point at $a = 0.1$.}
+\captionn{Prey without predators}{Simulated trajectories $x(t)$ for $y = 0$ and different initial values $x_0$ (from top to bottom: \numlist{1.5; 1.1; 1.0; 0.9; 0.5; 0.13; 0.1; 0.07; 0}). Note the stable fixed points at $0$ and at the carrying capacity $1$, and the unstable fixed point at $a = 0.1$.}
 \label{fig:time_sim}
 \end{figure}
 
@@ -61,25 +70,24 @@ Fixed point  & Eigenvalues  & Eigenvectors \\
 \label{tab:fpx}
 \end{table}
 
-$(0,\ 0)$ is an attractor node. In the common case that $c > a = 0.1$, the $x$-axis is the slow eigendirection. When $c < a$, the $y$-axis is the slow eigendirection.
+$(0,\ 0)$ is an attractor node for $c > 0$. In the common case that $c > a = 0.1$, the $x$-axis is the slow eigendirection. When $c < a$, the $y$-axis is the slow eigendirection.
 
 $(a,\ 0)$ is a saddle when $c > a$. Its stable manifold is then the $x$-axis, and its unstable manifold is locally spanned by $(ab/(c-a^2),\ 1)$, which is an upwards pointing vector, rotated slightly right. When $c < a$, both dimensions are unstable, and $(a,\ 0)$ is then a repellor node. For $c > a^2$, the slow eigendirection is $(ab/(c-a^2),\ 1)$. For $c < a^2$, the $x$-axis is the slow eigendirection.
 
 $(1,\ 0)$ is a saddle when $c < 1$. With $a = 0.1$, the stable manifold is the $x$-axis, and the unstable manifold is locally spanned by $(-b/(2-c-a),\ 1)$, which is an upwards pointing vector, rotated slightly \emph{left}. When $c > 1$, both dimensions become stable, and $(1,\ 0)$ is then an attracting node. Because $c < 1.5$ in this exercise, the slow eigendirection is $(-b/(2-c-a),\ 1)$.
 
-The final fixed point, $(c,\ (c-a)(1-c)/b)$, has a wider range of behaviours (\cref{fig:eigenheart}). It is a saddle for $c > 1$, and for $0 < c < a$. It is an unstable node for $a < c < c_u$, an unstable spiral for $c_u < c < (a+1)/2$, a stable spiral for $(a+1)/2 < c < c_s$, and a stable node for $c_s < c < 1$. $c_u$ and $c_s$ are the solutions to 
-
-For $a = 0.1$, $c_u$ and $c_s$ are numerically determined to be $c_u = 0.1259..$ and $c_s = 0.8783..$.
+The final fixed point, $(c,\ (c-a)(1-c)/b)$, has a wider range of behaviours (\cref{fig:eigenheart}). It is a saddle for $c > 1$, and for $0 < c < a$. It is an unstable node for $a < c < c_u$, an unstable spiral for $c_u < c < (a+1)/2$, a stable spiral for $(a+1)/2 < c < c_s$, and a stable node for $c_s < c < 1$. $c_u$ and $c_s$ are the solutions to $4 \Delta = \tau^2$ (\citefull{Strogatz1994}). For $a = 0.1$, $c_u$ and $c_s$ are numerically determined to be $c_u = 0.1259..$ and $c_s = 0.8783..$.
 
 \begin{figure}
 \img[0.55]{eigenheart}
 \img[0.65]{stability_diagram}
-\captionn{Linear system analysis of the fixed point $\bm{(c,\  (a-c)(c-1)/b)}$}{\Left: eigenvalues of the Jacobian at the fixed point, for $a = 0.1$ and $c \in [0, 1.5]$ ($c = 1.5$ at the far right, and at the far left outside the figure). \Right: trace $\tau$ and determinant $\Delta$ of the Jacobian at the fixed point, for $a = 0.1$ and $c \in [0, 1.04]$ (for larger $c$, the $(\tau, \Delta)$ curve simply extends further down in the 3rd quadrant). u.n.: unstable nodes.}
+\captionn{Linear system analysis of the fixed point $\bm{(c,\  (a-c)(c-1)/b)}$}{\Left: eigenvalues of the Jacobian at the fixed point, for $a = 0.1$ and $c \in [0, 1.5]$ ($c = 0$ in the origin, and $c = 1.5$ at the far right for $\lambda_2$ and at the far left, outside the figure, for $\lambda_1$). \Right: trace $\tau$ and determinant $\Delta$ of the Jacobian at the fixed point, for $a = 0.1$ and $c \in [0, 1.04]$ (for larger $c$, the $(\tau, \Delta)$ curve simply extends further down in the 3rd quadrant). u.n.: unstable nodes.}
 \label{fig:eigenheart}
 \end{figure}
 
-The separatrices between basins of attraction are the stable manifolds of saddles. The stable manifold of a saddle at $(x^*,\ y^*)$ can be found numerically by simulating a trajectory back in time. The initial point of this trajectory is $(x^* + \Delta x,\ y^* + \Delta y)$, where $\Delta x$ and $\Delta y$ are small perturbations along the eigenvector of the Jacobian corresponding to this manifold (i.e. the eigenvector with a positive eigenvalue).
+The separatrices between basins of attraction are the stable manifolds of saddles. The stable manifold of a saddle at $(x^*,\ y^*)$ can be found numerically by simulating a trajectory back in time. The initial point of this trajectory is $(x^* + \Delta x,\ y^* + \Delta y)$, where $\Delta x$ and $\Delta y$ are small perturbations on the line spanned by the eigenvector of the Jacobian corresponding to this stable manifold (i.e. the eigenvector with a negative eigenvalue).
 
+This technique is used in \cref{fig:beautiful_phase_spaces} to draw the separatrices between basins of attraction. Note that the separatrices themselves are also one-dimensional `manifolds of attraction', namely for the saddles.
 
 \begin{landscape}
 \begin{figure}
@@ -91,11 +99,13 @@ The separatrices between basins of attraction are the stable manifolds of saddle
 \img[0.5]{phase_space_05300}
 \img[0.5]{phase_space_05500} \\[2.4em]
 \img[0.5]{phase_space_07000}
-\img[0.5]{phase_space_10000}
+\img[0.5]{phase_space_09200}
 \img[0.5]{phase_space_11000} \\[0.3em]
-\captionn{Phase space diagrams for different predator-decay rates $\bm{c}$}{Fixed points are indicated with colored dots. Their manifolds of attraction are given the same color. The limit cycle for $0.446... = c_h < c < 0.55$, and its basin of attraction, are indicated in purple.}
+\captionn{Phase space diagrams for different predator decay rates $\bm{c}$}{Fixed points are indicated with colored dots. Their manifolds of attraction are given the same color. The limit cycle for $c_h = 0.446... < c < 0.55$, its basin of attraction, and its period $T$, are indicated in purple. At $c = 0$, the entire $y$-axis consists of fixed points.}
 \label{fig:beautiful_phase_spaces}
 \end{figure}
 \end{landscape}
 
-\lipsum
+\Cref{fig:beautiful_phase_spaces} is consistent with the analysis made above: the origin is indeed always an attractor node for $c > 0$; the role of $(a,\ 0)$ indeed switches from repellor node to saddle point (top row), just as $(1,\ 0)$ switches from saddle point to attractor node (bottom row); and finally, the fixed point $(c,\ (c-a)(1-c)/b)$ takes on the subsequent roles predicted in \cref{fig:eigenheart}: from unstable spiral (top and middle row), to center (middle row, right), to stable spiral, attractor node, and saddle point (bottom row).
+
+This sequence of behaviours of the last fixed point can also be observed by following the eigenvalues $\lambda_i$ of its Jacobian in the complex plane (\cref{fig:eigenheart}). For $c > 1$, the eigenvalues start out on opposite ends of the real axis, and the fixed point is indeed a saddle. When $c$ then decreases, the eigenvalues move closer together, until the right eigenvalue (say $\lambda_2$) crosses the origin and enters stable territory, at $c = 1$. The fixed point is then a stable node, until $c = c_s = 0.8783..$. There, the eigenvalues meet on the negative real axis, only to immediately part again. The eigenvalues leave the real axis in opposite directions, tracing symmetric paths that bend towards the $y$-axis. The fixed point is then a stable spiral, up until the eigenvalues cross the $y$-axis. This happens at $c = 0.55$, and the fixed point is then locally surrounded by closed orbits. When $c$ decreases further, the eigenvalues continue their heart-shaped paths in the right half plane, while the fixed point is an unstable spiral. The eigenvalues meet again on the positive real axis, when $c = c_u = 0.1259..$. The fixed point is then a repellor node, while the eigenvalues move in opposite directions on the real axis, towards their initial locations (left for $\lambda_1$, right for $\lambda_2$). At $c = a = 0.1$, $\lambda_1$ crosses into the left half plane, making the fixed point a saddle point. This continues until $c = 0$, when both eigenvalues arrive at the origin, and the fixed point disappears.
