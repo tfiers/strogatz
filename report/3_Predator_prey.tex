@@ -18,7 +18,7 @@ with $a = 0.1$ and $b = 1.5$. The following could be an ecological interpretatio
 
 The $-d$ term represents a constant decline of species $y$; This would correspond to a linear decrease in $y$ over time, with slope $d$, if this was the only term present. Maybe an environmental agency eliminates a fixed number $d$ of $y$-type animals every time period, to keep the ecosystem balanced.
 
-The $-cy$ term represents a proportional pressure on $y$, corresponding to an exponential decline of $y$ over time with time constant $1/c$ (i.e. faster decline for larger $c$). There might be a fixed amount of resources available for the $y$ species. Then, a larger number of $y$ animals will result in a proportionally smaller amount of resources per animal.
+The $-cy$ term represents a proportional pressure on $y$, corresponding to an exponential decline of $y$ over time with time constant $1/c$ (i.e. faster decline for larger $c$). There might be a fixed amount of resources available for the $y$ species. Then, a larger number of $y$ animals will result in a proportionally smaller amount of resources per animal, resulting in the proportional pressure on $y$.
 
 The $xy$ term represents a growth of $y$ that is both proportional to the other species and to itself. For constant $x$, this would correspond to exponential growth of $y$ with time constant $1/x$ (i.e. faster growth for more $x$). $y$ could be a multiplying parasite, and $x$ could be its host.
 
@@ -121,3 +121,31 @@ Between $0.446... < c < 0.55$, the phase portrait contains a limit cycle (the pu
 \end{figure}
 
 These differences in limit cycle behaviour can be observed in \cref{fig:lc_sims}. A near-harmonic oscillation yields regular, sine-like time series. Their amplitude is roughly the same as their initial amplitude (closed orbit-like behaviour). On the other hand, a near-heteroclinic cycle yields more exotic time series, with a longer period. The amplitude also grows quickly to the limit cycle amplitude, irrespective of the initial condition. Finally, each oscillation period contains a long interval where both time series are minimal and near constant. This happens when the trajectory comes close to the slow, stable manifold on the $x$-axis
+
+
+
+
+
+\section{Bifurcation analysis}
+
+A bifurcation diagram for $d = 0$ (\cref{fig:bd_x}) confirms the previous stability analyses and phase space diagrams. Each of the four fixed points corresponds to a straight-line branch in the bifurcation diagram: at constant $x$ for the first three fixed points, and increasing proportionally to $c$ for the fourth, complex fixed point. At $c = 0.55$, we find indeed that this fourth fixed point switches from unstable to stable. At $c = 1$, it switches stability with the fixed point at $x = 1$ in a transcritical bifurcation.
+
+\begin{figure}
+\img[0.8]{bd_x}
+\captionn{Bifurcation diagram for $\bm{d = 0}$}{$(c, x)$-plane projection. Orange lines represent unstable fixed points, while blue lines represent stable fixed points. The blue shaded region indicates the $x$-range of the limit cycle. Important bifurcations that are visible here are the heteroclinic cycle (and the start of the limit cycle) at $c = c_h = 0.446..$, the closed orbit behaviour at $c = 0.55$ (central blue circle), and the transcritical bifurcation at $c = 1$ (top right blue circle).}
+\label{fig:bd_x}
+\end{figure}
+
+Regarding periodic solutions: for a set of example values of $c$, the limit cycle and its period were calculated numerically (see e.g. \cref{fig:beautiful_phase_spaces}, middle row). This confirmed that the limit cycle amplitude is approximately linear in $c$, as drawn in \cref{fig:bd_x}.
+
+
+For $d \neq 0$, the transcritical bifurcation at $c = 1, x = 1$ disappears (\cref{fig:bd_amazing}): for $d > 0$, the top-right and bottom-left branches in the $(c,x)$-plane join, while for $d < 0$, the bottom-right and top-left branches join. In the $(c,y)$-plane, the branches form a loop in the left-hand side of the plane for $d > 0$, and in the right-hand side of the plane for $d < 0$. (A similar phenomenon occurs at the fixed points-crossing for $c = a = 0.1$; although this is not a transcritical bifurcation, as both fixed points are unstable there).
+
+
+\begin{figure}
+\img[0.96]{bd_d_pos} \\[3em]
+\img[0.96]{bd_d_zero} \\[3em]
+\img[0.96]{bd_d_neg} \\[0.3em]
+\captionn{Bifurcation diagrams}{\Top: $d = 0.01$. \Middle: $d = 0$. \Bottom: $d = -0.01$. Dashed lines indicate unstable fixed points and solid lines indicate stable fixed points. Branches are coloured according to their corresponding fixed point (same colours as \cref{fig:beautiful_phase_spaces}; with the fixed point at $x = 0$ indicated in black here).}
+\label{fig:bd_amazing}
+\end{figure}
