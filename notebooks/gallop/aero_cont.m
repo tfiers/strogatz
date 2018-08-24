@@ -28,8 +28,9 @@ plot(p(ustab_idxs), x(1,(ustab_idxs)), 'r.');
 hopfbif = coco_bd_labs(ep_data, 'HB');
 
 prob = coco_prob();
-prob = coco_set(prob, 'coll', 'NTST', 12);         % ???
-prob = coco_set(prob, 'cont', 'NAdapt', 5);       % ???
+prob = coco_set(prob, 'coll', 'NTST', 48);         % ???
+prob = coco_set(prob, 'coll', 'NCOL', 6);         % ???
+prob = coco_set(prob, 'cont', 'NAdapt', 0);       % ???
 prob = coco_set(prob, 'cont', 'h0', 80);         % ???
 prob = coco_set(prob, 'cont', 'h_max', 100);      % ???
 prob = coco_set(prob, 'cont', 'ItMX', 400);       % ???
@@ -37,7 +38,7 @@ prob = coco_set(prob, 'corr', 'TOL', 1e-4);       % ???
 
 prob = ode_HB2po(prob, '', 'aero_ep', hopfbif);
 
-po_data = coco(prob, 'aero_po', [], 1, 'V/Vc', [0.9 2]);
+po_data = coco(prob, 'aero_po', [], 1, 'V/Vc', [0.9 1.5]);
 
 % visualize
 p = coco_bd_col(po_data, 'V/Vc');
@@ -59,3 +60,6 @@ plot(p(sn_idxs), nrm(sn_idxs), 'ko', 'MarkerSize', 6);
 
 xlabel('V/Vc');
 ylabel('A/Vc');
+
+period = coco_bd_col(po_data, 'po.period');
+period(end)

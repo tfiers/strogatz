@@ -34,17 +34,17 @@ $V_C < V < V_R $  & Unstable spiral     \\[1em]
 $V = V_R$         & Repelling star      \\[1em]
 $V > V_R$         & Repelling node      \\[1em]
 \bottomrule
-\vspace{26pt}
+\vspace{36pt}
 \end{tabular}
 \captionnoftable{Classification of the fixed point}{According to the linear stability analysis. $V_C \approx 42.6$ and $V_R \approx 895$.}
 \label{tab:fp_class}
-\vspace{26pt}
+\vspace{14pt}
 \end{minipage}
 \end{figure}
 
-When the nonlinear terms of $C(\alpha)$ are not neglected, $\dot{x}(x)$ will look `bumpy'. A slight displacement $y$ will shift this bumpy function, so that $\dot{x}(x)$ crosses the $x$-axis more than once. In one-dimensional systems, this tends to result in fixed points away from the origin. This might then correspond to one or more limit cycles in the current two-dimensional system. When the fixed point starts at the origin, we get an ordinary supercritical Hopf bifurcation. When $V$ then passes the bifurcation $V_C$, the origin is unstable, and even the tiniest displacement from the origin will end up on the limit cycle. When the model is simulated (\cref{fig:bridge_phase}), this is indeed what we observe.
+When the nonlinear terms of $C(\alpha)$ are not neglected, $\dot{x}(x)$ will look `bumpy'. A slight displacement $y$ will shift this bumpy function, so that $\dot{x}(x)$ crosses the $x$-axis more than once. In one-dimensional systems, this tends to result in fixed points away from the origin. This might then correspond to one or more limit cycles in the current two-dimensional system. When the fixed point starts at the origin, we get an ordinary supercritical Hopf bifurcation. When $V$ then passes the bifurcation $V_C$, the origin is unstable, and even the tiniest displacement from the origin will end up on the limit cycle. This is indeed what we observe when the model is simulated (\cref{fig:bridge_phase}).
 
-When the `bump' crosses the $x$-axis away from the origin, we get a limit cycle `out of the blue sky', i.e. a saddle-node bifurcation of a cycle. This is indeed what happens and what we can observe in a bifurcation diagram (\cref{fig:bd_coco}): at $V \approx 1.24 V_C$, an unstable-stable pair of limit cycles appears, at a large amplitude.
+When the `bump' crosses the $x$-axis away from the origin, we get a limit cycle `out of the blue sky', i.e. a saddle-node bifurcation of a cycle. This is indeed what happens and what we can observe in a bifurcation diagram (\cref{fig:bd_coco}): at $V \approx 1.24 V_C$, an unstable-stable pair of limit cycles appears. Another saddle-node bifurcation occurs at $V \approx 1.84 V_C$: here, the two smallest limit cycles coalesce and annihilate. A trajectory on the smallest stable orbit will suddenly jump to the only orbit, with a catastrophically large amplitude. 
 
 \begin{figure}
 \img[0.6]{bridge_phase_subc}
@@ -63,8 +63,57 @@ When the `bump' crosses the $x$-axis away from the origin, we get a limit cycle 
 
 \begin{figure}
 \img[0.75]{orbits_3D}
-\captionn{Phase space orbits}{Orbits $(y, \dot{y})$ for different wind speeds $V$. Note the inner manifold, indicative of hysteresis behaviour.}
+\captionn{Phase space orbits}{$(y, \dot{y})$ traces of fixed points and limit cycles for different wind speeds $V$. Note the inner manifold, indicative of hysteresis behaviour.}
 \label{fig:orbits_3D}
 \end{figure}
 
 
+The continuations of \cref{fig:bd_coco,fig:orbits_3D} were performed with the following settings:
+\begin{itemize}
+\item 12 discretisation intervals \texttt{NTST} for the collocation algorithm.
+\item 4 collocation points \texttt{NCOL} per discretisation interval.
+\item Adaptation of orbit discretisation between continuation steps (\texttt{NAdapt = 1})
+\item Maximum parameter change \texttt{h\_max} of 100 per step.
+\item Initial parameter change \texttt{h0} of 80 per step.
+\item Maximum of \texttt{ItMX = 400} continuation steps per branch.
+\item Sufficient accuracy of root finding \texttt{corr.TOL} of \num{1e-4}.
+\end{itemize}
+
+The numeric experiment detailed in \cref{tab:numerics} reveals that these parameters are important to calculate at least the cycle period: adding only one collocation point more per interval (or doubling the number of intervals) increases the accuracy of the calculated period by four orders of magnitude.
+
+
+\begin{table}
+\begin{tabular}{@{}rrrr@{}} \toprule
+              &  \multicolumn{3}{c}{\texttt{NTST}}     \\ \cmidrule{2-4}
+\texttt{NCOL} & 12              & 24              & 48             \\[1em]
+\midrule
+4             & \num{-1.0e-4}   & \num{1.1e-8}   & \num{1.2e-8}    \\[1em]
+5             & \num{1.1e-8}    & \num{7.4e-9}   & \num{2.6e-9}    \\[1em]
+6             & \num{2.4e-9}    & \num{4.7e-9}   & \num{3.0e-9}    \\[1em]
+7             & \num{1.2e-8}    & \num{2.6e-9}   & 0               \\
+% With nadapt = 1:
+% 4             & \num{+9.6e-9}   & \num{+8.8e-9}   & \num{+8.0e-9}   \\[1em]
+% 5             & \num{+4.5e-12}  & \num{-2.2e-12}  & \num{-3.9e-12}  \\[1em]
+% 7             & \num{-2.3e-12}  & \num{-1.2e-12}  & 0               \\
+\bottomrule
+\end{tabular}
+\captionn{Relative period error}{Period of the limit cycle at $V = 1.5 V_C$: relative error with respect to the period at number of intervals \texttt{NTST = 24} and number of collocation points \texttt{NCOL = 7}. Periods calculated without adaptive orbit discretisation (\texttt{NAdapt = 0}).}
+\label{tab:numerics}
+\end{table}
+
+
+% p = [ 0.628319662973291, 0.628384555144029, 0.628384551817114;
+%       0.628384555839797, 0.628384553490447, 0.628384550448574;
+%       0.628384556729517, 0.628384550462603, 0.628384548843046 ]
+
+% (p - p(end)) / p(end)
+
+% 1.0e-03 *
+
+%   -0.103258219627479   0.000010027272440   0.000004732878931
+%    0.000011134505265   0.000007395791364   0.000002555008787
+%    0.000012550389799   0.000002577334288                   0
+
+% p6 = [ 0.628384550350641, 0.628384551814621, 0.628384550701407 ]
+% pend = 0.628384548843046
+% (p6 - pend) / pend
