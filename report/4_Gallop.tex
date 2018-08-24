@@ -4,35 +4,43 @@
 
 \chapter{Aero-elastic galloping}
 
-From Newton's second law and the definitions of linear acceleration $\ddot{y}$ and speed $\dot{y}$, the motion of the bridge element is described by
+From Newton's second law and introducing $x = \dot{y}$ as the linear velocity of the bridge element, its motion can be described by
 %
 \begin{align*}
-\dot{x} &= - \qty(\rho\ V^2\ a\ C(x/V)\ /2  +  r x  +  k y) / m \\
+\dot{x} &= 0.5\ V^2\ C(x/V)\ - x - 100y \\
 \dot{y} &= x
 \end{align*}
 %
-with $m, \rho, r, k, a, $ and $C(\alpha)$ as given.
+where the constants have been substituted in, and with $C(\alpha) \approx \num{e-2}\ \alpha - \num{e-3}\ \alpha^3 + \num{e-5}\ \alpha^5 - \num{e-8}\ \alpha^7$ (exact coefficients as in the assignment).
 
 
-\Cref{fig:eigencup} shows the eigenvalues of Jacobian at the fixed point (at the origin) as a function of $V$. At $V = V_C = 809.37...$ the eigenvalues land on the real axis, and the system undergoes a bifurcation. $V_C$ was determined numerically as the solution to $4 \Delta = \tau^2$ (see \cref{sec:predator}). Additionally, the trace of the Jacobian is $\tau = -0.023475.. V − 1$. For every $V \geq 0$, $\tau < 0$. Hence, the fixed point is locally never an unstable spiral or node, but rather a stable spiral or node. Based on this linear analysis, we can classify the stability of the fixed point as in \cref{tab:fp_class}.
+The system has a fixed point at the origin. \Cref{fig:eigencup} shows the eigenvalues of the Jacobian at this fixed point, for varying wind speeds $V$. In low-wind conditions, the system starts out stable, with both eigenvalues having negative real parts (but having nonzero imaginary parts, predicting oscillatory behaviour). At $V = V_C = 42.5985...$, the eigenvalues cross the imaginary axis, and the origin transitions from a stable spiral, through a center, to an unstable spiral. $V_C$ is the solution to $\tau = 0$, with $\tau = V\ A_1 / 2 - 1$ the trace of the Jacobian at the origin. For very large $V = V_R = 894.6..$, the eigenvalues land on the real axis, and the unstable spiral transitions to a repelling star and a repelling node. $V_R$ is the solution to $4 \Delta = \tau^2$, with $\Delta = 100$ the determinant of the Jacobian at the origin (see \cref{sec:predator}). \Cref{tab:fp_class} summarises this classification of the origin's stability.
 
 \begin{figure}
-\img[0.8]{eigencup}
-\captionn{Linear stability analysis of the bridge model}{Eigenvalues of the Jacobian at the fixed point $(0,0)$, for $V \in [0, 1000]$ ($V = 0$ at the ends of the bends, near the imaginary axis).}
+\begin{minipage}[b]{0.6\textwidth}
+\img[1]{eigencup}
+\captionn{Linear stability analysis of the bridge model}{Eigenvalues of the Jacobian at the fixed point $(0,0)$, for $V \in [0, 900]$ ($V = 0$ in the left half plane, at $\text{Re } \lambda_i = -0.5$).}
 \label{fig:eigencup}
-\end{figure}
-
-\begin{table}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.6\textwidth}
+\centering
 \begin{tabular}{@{}ll@{}} \toprule
-Wind speed $V$  & Stability of origin \\\midrule
-$V < V_C$  &      Stable spiral  \\[1em]
-$V = 0$    &      Stable star  \\[1em]
-$V > V_C$  &      Stable node  \\[1em]
+Wind speed $V$    & Stability of origin \\
+\midrule
+$V < V_C$         & Stable spiral       \\[1em]
+$V = V_C$         & Center              \\[1em]
+$V_C < V < V_R $  & Unstable spiral     \\[1em]
+$V = V_R$         & Repelling star      \\[1em]
+$V > V_R$         & Repelling node      \\[1em]
 \bottomrule
+\vspace{26pt}
 \end{tabular}
-\captionn{Classification of the fixed point}{}
+\captionnoftable{Classification of the fixed point}{$V_C = 42.6..$ and $V_R = 894.6..$}
 \label{tab:fp_class}
-\end{table}
+\vspace{26pt}
+\end{minipage}
+\end{figure}
 
 
 \begin{figure}
