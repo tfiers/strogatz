@@ -18,3 +18,6 @@ for lab=1:nb_labs{end}
     plot3(sol.p*ones(N,1), sol.xbp(:,1), sol.xbp(:,2));
 end
 grid on, view(30,15), box on
+xlabel('V/Vc');
+ylabel('$y/Vc$');
+zlabel('$\dot{y}/Vc$');

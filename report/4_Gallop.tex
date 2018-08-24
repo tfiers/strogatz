@@ -4,7 +4,7 @@
 
 \chapter{Aero-elastic galloping}
 
-From Newton's second law and introducing $x = \dot{y}$ as the linear velocity of the bridge element, its motion can be described by
+Applying Newton's second law to the bridge element, and introducing $x = \dot{y}$ as its linear velocity, its dynamic behaviour can be described by
 %
 \begin{align*}
 \dot{x} &= 0.5\ V^2\ C(x/V)\ - x - 100y \\
@@ -14,7 +14,7 @@ From Newton's second law and introducing $x = \dot{y}$ as the linear velocity of
 where the constants have been substituted in, and with $C(\alpha) \approx \num{e-2}\ \alpha - \num{e-3}\ \alpha^3 + \num{e-5}\ \alpha^5 - \num{e-8}\ \alpha^7$ (exact coefficients as in the assignment).
 
 
-The system has a fixed point at the origin. \Cref{fig:eigencup} shows the eigenvalues of the Jacobian at this fixed point, for varying wind speeds $V$. In low-wind conditions, the system starts out stable, with both eigenvalues having negative real parts (but having nonzero imaginary parts, predicting oscillatory behaviour). At $V = V_C = 42.5985...$, the eigenvalues cross the imaginary axis, and the origin transitions from a stable spiral, through a center, to an unstable spiral. $V_C$ is the solution to $\tau = 0$, with $\tau = V\ A_1 / 2 - 1$ the trace of the Jacobian at the origin. For very large $V = V_R = 894.6..$, the eigenvalues land on the real axis, and the unstable spiral transitions to a repelling star and a repelling node. $V_R$ is the solution to $4 \Delta = \tau^2$, with $\Delta = 100$ the determinant of the Jacobian at the origin (see \cref{sec:predator}). \Cref{tab:fp_class} summarises this classification of the origin's stability.
+The system has a fixed point at the origin. \Cref{fig:eigencup} shows the eigenvalues of the Jacobian at this fixed point, for varying wind speeds $V$. In low-wind conditions, the system starts out stable, with both eigenvalues having negative real parts (but having nonzero imaginary parts, predicting oscillatory behaviour). At $V = V_C = 42.5985...$, the eigenvalues cross the imaginary axis, and the origin transitions from a stable spiral, through a center, to an unstable spiral. This is a telltale sign of a Hopf bifurcation. $V_C$ is the solution to $\tau = 0$, with $\tau = V\ A_1 / 2 - 1$ the trace of the Jacobian at the origin. For very large $V = V_R = 894.6..$, the eigenvalues land on the real axis, and the unstable spiral transitions to a repelling star and a repelling node. $V_R$ is the solution to $4 \Delta = \tau^2$, with $\Delta = 100$ the determinant of the Jacobian at the origin (see \cref{sec:predator}). \Cref{tab:fp_class} summarises this classification of the origin's stability.
 
 \begin{figure}
 \begin{minipage}[b]{0.6\textwidth}
@@ -36,15 +36,35 @@ $V > V_R$         & Repelling node      \\[1em]
 \bottomrule
 \vspace{26pt}
 \end{tabular}
-\captionnoftable{Classification of the fixed point}{$V_C = 42.6..$ and $V_R = 894.6..$}
+\captionnoftable{Classification of the fixed point}{According to the linear stability analysis. $V_C \approx 42.6$ and $V_R \approx 895$.}
 \label{tab:fp_class}
 \vspace{26pt}
 \end{minipage}
 \end{figure}
 
+When the nonlinear terms of $C(\alpha)$ are not neglected, $\dot{x}(x)$ will look `bumpy'. A slight displacement $y$ will shift this bumpy function, so that $\dot{x}(x)$ crosses the $x$-axis more than once. In one-dimensional systems, this tends to result in fixed points away from the origin. This might then correspond to one or more limit cycles in the current two-dimensional system. When the fixed point starts at the origin, we get an ordinary supercritical Hopf bifurcation. When $V$ then passes the bifurcation $V_C$, the origin is unstable, and even the tiniest displacement from the origin will end up on the limit cycle. When the model is simulated (\cref{fig:bridge_phase}), this is indeed what we observe.
+
+When the `bump' crosses the $x$-axis away from the origin, we get a limit cycle `out of the blue sky', i.e. a saddle-node bifurcation of a cycle. This is indeed what happens and what we can observe in a bifurcation diagram (\cref{fig:bd_coco}): at $V \approx 1.24 V_C$, an unstable-stable pair of limit cycles appears, at a large amplitude.
 
 \begin{figure}
-\img[1]{bridge_phase}
-\captionn{Phase space diagram of the bridge model}{Here for $V = 300$.}
+\img[0.6]{bridge_phase_subc}
+\img[0.6]{bridge_phase_superc}
+\captionn{Phase space diagrams of the bridge model}{\Left: below the critical wind speed $V_C$, displacements return to the origin. \Right: above the critical wind speed, the same starting phase point will end up on a limit cycle.}
 \label{fig:bridge_phase}
 \end{figure}
+
+
+\begin{figure}
+\img[0.75]{coco}
+\captionn{Aero-elastic galloping bifurcation diagram}{$A$ is the maximal displacement during the limit cycle. Blue and green dots indicate stable fixed points and stable limit cycles, respectively. Red dots indicate unstable fixed points and unstable limit cycles. Black circles mark saddle-node bifurcations.}
+\label{fig:bd_coco}
+\end{figure}
+
+
+\begin{figure}
+\img[0.75]{orbits_3D}
+\captionn{Phase space orbits}{Orbits $(y, \dot{y})$ for different wind speeds $V$. Note the inner manifold, indicative of hysteresis behaviour.}
+\label{fig:orbits_3D}
+\end{figure}
+
+

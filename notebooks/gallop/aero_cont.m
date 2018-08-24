@@ -1,6 +1,7 @@
 % bifurcation diagram of the aero model
 clear;
 close all;
+clc;
 
 %% continuate along equilibrium point
 prob = coco_prob();
@@ -27,16 +28,16 @@ plot(p(ustab_idxs), x(1,(ustab_idxs)), 'r.');
 hopfbif = coco_bd_labs(ep_data, 'HB');
 
 prob = coco_prob();
-% prob = coco_set(prob, 'coll', 'NTST', 5);         % ???
-% prob = coco_set(prob, 'cont', 'NAdapt', 1);       % ???
-% prob = coco_set(prob, 'cont', 'h0', 0.1);         % ???
-% prob = coco_set(prob, 'cont', 'h_max', 0.5);      % ???
-% prob = coco_set(prob, 'cont', 'ItMX', 100);       % ???
-% prob = coco_set(prob, 'corr', 'TOL', 1e-6);       % ???
+prob = coco_set(prob, 'coll', 'NTST', 12);         % ???
+prob = coco_set(prob, 'cont', 'NAdapt', 5);       % ???
+prob = coco_set(prob, 'cont', 'h0', 80);         % ???
+prob = coco_set(prob, 'cont', 'h_max', 100);      % ???
+prob = coco_set(prob, 'cont', 'ItMX', 400);       % ???
+prob = coco_set(prob, 'corr', 'TOL', 1e-4);       % ???
 
 prob = ode_HB2po(prob, '', 'aero_ep', hopfbif);
 
-po_data = coco(prob, 'aero_po', [], 1, 'V/Vc', [0.1 2]);
+po_data = coco(prob, 'aero_po', [], 1, 'V/Vc', [0.9 2]);
 
 % visualize
 p = coco_bd_col(po_data, 'V/Vc');
