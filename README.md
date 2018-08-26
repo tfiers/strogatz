@@ -70,9 +70,10 @@ to initial conditions (y_0 here)._
 <br>
 <img src="figures/5/chua.png">
 
-_Simulation of an electrical circuit with a nonlinear element
+_Simulations of an electrical circuit with a nonlinear element
 ([Chua's circuit](https://www.wikiwand.com/en/Chua%27s_circuit)).
-This system is also chaotic; its phase space trajectories end up
+This system is also chaotic. Its phase space trajectories
+(of which some 2D projections are shown here) end up
 on a "double scroll". This is a so called strange attractor:
 an attracting fractal with dimension between 2 and 3._
 
