@@ -51,8 +51,9 @@ correspond to the phase portraits and stability diagram shown above
 Branches are coloured according to their fixed point; same colours as in the first figure above).
 The bifurcation diagrams in the center and right columns depict systems with an
 imperfection parameter present (middle: d = 0.001, right: d = 0.01).
-This breaks the transcritical bifurcations (a switch in stability when branches 
-of different fixed points cross) present in the left column (d = 0).</em>
+In the left hand column (d = 0), 'transcritical bifurcations' are present.
+These are switches in stability when branches of different fixed points cross.
+The imperfection breaks up these bifurcations.</em>
 </p>
 
 
