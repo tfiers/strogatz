@@ -18,7 +18,8 @@ Or simply check out some figures below:
 
 ![](figures/3/phase_comp.png)
 _Phase space portraits of a predator-prey model, for different predator decay rates **c**.
-(Normalised prey amount on the x-axis, normalised predator amount on the y-axis. Coloured dots represent fixed points.
+(Normalised prey amount on the x-axis, normalised predator amount on the y-axis.
+Some example (partial) trajectories are indicated in grey. Coloured dots represent fixed points.
 Basins and curves of attraction are coloured according to their attracting fixed point. The purple orbit is a limit cycle)._
 
 
