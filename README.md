@@ -11,7 +11,7 @@ on which the course is based).
 Check out the [Report](report/NLS_Report.pdf) and the underlying [Jupyter notebooks](notebooks/).
 Note that these might not make much  sense without the [Assignment](Assignment.pdf)
 and some background in nonlinear system analysis, as it was explicitly not the goal 
-to explain theory or repeat the assignment.
+to explain theory or repeat the assignment in the report.
 
 Or simply check out some figures below:
 
