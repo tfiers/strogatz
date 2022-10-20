@@ -68,7 +68,7 @@ The imperfection breaks up these bifurcations.</em>
 <p>
 <img src="figures/5/random_burst_structure.png">
 <em>Simulations of a neuron model (the 
-<a href="https://www.wikiwand.com/en/Hindmarsh%E2%80%93Rose_model">Hindmarsh-Rose model</a>).
+<a href="https://en.wikipedia.org/wiki/Hindmarsh%E2%80%93Rose_model">Hindmarsh-Rose model</a>).
 In a certain region of parameter space, this model neuron is in "random burst generation" mode,
 and the system exhibits so called chaotic behaviour. This means that the system is extremely sensitive
 to initial conditions (y<sub>0</sub> here).</em>
@@ -84,7 +84,7 @@ to initial conditions (y<sub>0</sub> here).</em>
 <p>
 <img src="figures/5/chua.png">
 <em>Simulations of an electrical circuit with a nonlinear element
-(<a href="https://www.wikiwand.com/en/Chua%27s_circuit">Chua's circuit</a>).
+(<a href="https://en.wikipedia.org/wiki/Chua%27s_circuit">Chua's circuit</a>).
 This system is also chaotic. Its phase space trajectories
 (of which some 2D projections are shown here) end up
 on a "double scroll". This is a so called strange attractor:
